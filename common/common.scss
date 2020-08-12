@@ -1,14 +1,11 @@
-.hello-world-banner {
-  height: 300px;
-  width: 100%;
-  background: $primary;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1em;
-}
+@import "common/foundation/variables";
 
-.hello-world {
-  font-size: 8em;
-  color: $secondary;
+.foobar {
+  display: flex;
+  justify-content: flex-end;
+  background: $secondary-high;
+  padding: .5em 0;
+  button {
+    margin: .25em;
+  }
 }
