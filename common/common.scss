@@ -1,11 +1,18 @@
 @import "common/foundation/variables";
 
-.foobar {
-  display: flex;
-  justify-content: flex-end;
+.sidebar {
   background: $secondary-high;
-  padding: .5em 0;
-  button {
-    margin: .25em;
+  padding: 0 1em;
+  .card {
+  background: $secondary;
+  height: 200px;
+  width: 200px;
+  padding: .5em;
+  margin: .5em 0;
+  box-sizing: border-box;
   }
+}
+
+table.topic-list {
+  display: flex;
 }
