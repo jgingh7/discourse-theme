@@ -1,18 +1,101 @@
-@import "common/foundation/variables";
+div.menu-links-header {
+  width: 100%;
+  .menu-links-row {
+    box-sizing: border-box;
+    display: flex;
+    z-index: 2;
+    // Tabs should have "ears".
+    padding: 0 4px;
 
-.sidebar {
-  background: $secondary-high;
-  padding: 0 1em;
-  .card {
-  background: $secondary;
-  height: 200px;
-  width: 200px;
-  padding: .5em;
-  margin: .5em 0;
-  box-sizing: border-box;
+    li {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      &.user {
+        margin-right: auto;
+        flex: 1 1 0;
+        overflow: hidden;
+      }
+      &.glyphs {
+        flex-wrap: nowrap;
+        text-align: right;
+
+        a {
+          // Expand the click area a bit.
+          visibility: hidden;
+          padding-left: 0.6em;
+          padding-right: 0.6em;
+        }
+      }
+
+      a {
+        // This is to make sure active and inactive tab icons have the same
+        // size. `box-sizing` does not work and I have no idea why.
+        border: 1px solid transparent;
+        &:not(.active):hover {
+          border-bottom: 0;
+          margin-top: -1px;
+        }
+      }
+
+      a.active {
+        border: 1px solid dark-light-choose($primary-low, $secondary-medium);
+        border-bottom: 1px solid $secondary;
+        position: relative;
+
+        &:focus,
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
   }
-}
+  a:hover,
+  a:focus {
+    background-color: $highlight-medium;
+    outline: none;
+  }
+  a {
+    padding: 0.3em 0.5em;
+  }
+  a.user-activity-link {
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    max-width: 100%;
 
-table.topic-list {
-  display: flex;
+    // `overflow: hidden` on `.user-activity-link` would hide the `::after`
+    // pseudo element (used to create the tab-looking effect). Sets `overflow:
+    // hidden` on the child username label instead.
+    overflow: visible;
+
+    span.d-label {
+      display: block;
+      @include ellipsis;
+    }
+
+    @include breakpoint(mobile-medium) {
+      max-width: 125px;
+    }
+  }
+  li {
+    display: table-cell;
+    width: auto;
+    text-align: center;
+  }
+  li:first-child {
+    text-align: left;
+  }
+
+  li:last-child {
+    text-align: right;
+  }
+  .fa,
+  a {
+    color: dark-light-choose($primary-medium, $secondary-medium);
+  }
+
+  .d-icon-user {
+    margin-right: 0.475em;
+  }
 }
